@@ -1,6 +1,7 @@
 name: Preview Synthetics
 on: 
   workflow_dispatch: # allows manual trigger
+  pull_request:
 
 # Stop the current running job if a new push is made to the PR
 concurrency:
@@ -23,15 +24,17 @@ jobs:
           path: repo
           sparse-checkout: |
             .
-      - name: Dump GitHub context
-        shell: bash
-        run: echo '${{ toJson(github) }}'
+
       - name: Extract branch name
         shell: bash
         run: |
           echo ${{ github.event.pull_request.head.ref }}
           echo "branch=$(echo ${{ github.event.pull_request.head.ref }})" >>$GITHUB_OUTPUT
         id: extract_branch
+
+      - name: Dump GitHub context
+        shell: bash
+        run: echo '${{ toJson(github) }}'
 
       - name: Check preview status
         id: check-status
