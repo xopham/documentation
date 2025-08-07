@@ -23,7 +23,8 @@ jobs:
           path: repo
           sparse-checkout: |
             .
-
+      - name: Dump GitHub context
+        run: echo "${{ toJson(github) }}"
       - name: Extract branch name
         shell: bash
         run: |
