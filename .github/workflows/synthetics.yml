@@ -26,7 +26,9 @@ jobs:
 
       - name: Extract branch name
         shell: bash
-        run: echo "branch=$(echo ${{ github.event.pull_request.head.ref }})" >>$GITHUB_OUTPUT
+        run: |
+          echo ${{ github.event.pull_request.head.ref }}
+          echo "branch=$(echo ${{ github.event.pull_request.head.ref }})" >>$GITHUB_OUTPUT
         id: extract_branch
 
       - name: Check preview status
