@@ -14,7 +14,7 @@ For more information on contributing, see the [contribution guidelines][18].
 
 ## Working on Docs
 
-### Outside Contributors
+### Outside Contributorssdf
 Follow these steps if you are NOT a Datadog employee:
 
 - Fork the master branch.
